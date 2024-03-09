@@ -1,0 +1,39 @@
+<header>
+  <div class="header">
+    <h1>Coffee Bean</h1>
+    <ul class="user-info">
+      <li>
+        <button class="user">
+          <i class="fa-regular fa-user"></i>
+        </button>
+      </li>
+      <li>
+        <button class="cart">
+          <i class="fa-solid fa-cart-shopping"></i>
+        </button>
+      </li>
+    </ul>
+    <div class="login">
+      <a href="/signin">로그인</a> <br />
+      <a href="/signup">회원가입</a>
+    </div>
+  </div>
+</header>
+
+<script>
+  const user = document.querySelector(".user");
+  const loginbox = document.querySelector(".login");
+
+  user.addEventListener("click", showLogin);
+
+  let userIconClicked = false;
+
+  function showLogin() {
+    if (userIconClicked) {
+      loginbox.style.display = "none";
+    } else {
+      loginbox.style.display = "block";
+    }
+    userIconClicked = !userIconClicked;
+  }
+</script>

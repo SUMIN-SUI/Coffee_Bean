@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="product.css" />
+    <title>Coffee Bean</title>
+  </head>
+  <body>
+    <%- include("./header.ejs") %>
+    <main>
+      <header class="header-product">
+        <h3><%= header %></h3>
+      </header>
+
+      <ul class="product-list">
+        <% productList.forEach((item) => { %>
+        <li class="item">
+          <a href="/blend/<%= item.id%>">
+            <img src="<%= item.img%>" />
+            <div class="item_info">
+              <p class="name"><%= item.name%></p>
+              <p class="price">
+                ₩<%= item.price_250g %> - ₩<%= item.price_1kg %>
+              </p>
+            </div>
+          </a>
+        </li>
+        <% });%>
+      </ul>
+    </main>
+  </body>
+</html>

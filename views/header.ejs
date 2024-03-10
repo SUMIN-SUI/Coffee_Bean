@@ -1,39 +1,79 @@
-<header>
-  <div class="header">
-    <h1>Coffee Bean</h1>
-    <ul class="user-info">
-      <li>
-        <button class="user">
-          <i class="fa-regular fa-user"></i>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" type="text/css" href="header.css" />
+    <title>Document</title>
+    <script
+      src="https://kit.fontawesome.com/b669fcd44b.js"
+      crossorigin="anonymous"
+    ></script>
+  </head>
+  <body>
+    <header class="header-container">
+      <div class="header">
+        <button>
+          <i class="fa-solid fa-bars"></i>
         </button>
-      </li>
-      <li>
-        <button class="cart">
-          <i class="fa-solid fa-cart-shopping"></i>
-        </button>
-      </li>
-    </ul>
-    <div class="login">
-      <a href="/signin">로그인</a> <br />
-      <a href="/signup">회원가입</a>
-    </div>
-  </div>
-</header>
+        <h1>
+          <a href="/">coFFee Bean</a>
+        </h1>
+        <ul class="user-info">
+          <li class="header-user">
+            <button class="user">
+              <i class="fa-regular fa-user"></i>
+            </button>
+            <% if(user_id) { %>
+            <div class="login">
+              <p><%= user_id %>님 환영합니다.</p>
+              <a href="/logout">로그아웃</a>
+            </div>
+            <% } else { %>
+            <div class="login">
+              <a class="sign" href="/signin">로그인</a>
+              <a class="sign" href="/signup">회원가입</a>
+            </div>
+            <% } %>
+          </li>
+          <li>
+            <button class="cart">
+              <i class="fa-solid fa-cart-shopping"></i>
+            </button>
+          </li>
+        </ul>
+      </div>
+      <div class="header-menu">
+        <ul class="header-menu-lists">
+          <li>
+            <a href="./blend"> 에스프레소 블랜드 </a>
+          </li>
+          <li>
+            <a href="./origin"> 에스프레소 싱글 오리진 </a>
+          </li>
+          <li>
+            <a href="./decaf"> 디카페인 </a>
+          </li>
+        </ul>
+      </div>
+    </header>
 
-<script>
-  const user = document.querySelector(".user");
-  const loginbox = document.querySelector(".login");
+    <script>
+      const user = document.querySelector(".user");
+      const loginbox = document.querySelector(".login");
 
-  user.addEventListener("click", showLogin);
+      user.addEventListener("click", showLogin);
 
-  let userIconClicked = false;
+      let userIconClicked = false;
 
-  function showLogin() {
-    if (userIconClicked) {
-      loginbox.style.display = "none";
-    } else {
-      loginbox.style.display = "block";
-    }
-    userIconClicked = !userIconClicked;
-  }
-</script>
+      function showLogin() {
+        if (userIconClicked) {
+          loginbox.style.display = "none";
+        } else {
+          loginbox.style.display = "block";
+        }
+        userIconClicked = !userIconClicked;
+      }
+    </script>
+  </body>
+</html>

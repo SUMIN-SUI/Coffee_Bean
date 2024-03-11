@@ -3,57 +3,60 @@ main {
   background-color: #f5f5f5;
 }
 
-.header-product {
+.products {
+  padding-top: 20px;
   text-align: center;
-  padding: 40px;
 }
 
-.header-product h3 {
+.products h1 {
   font-size: 22px;
   font-weight: 300;
   color: #565656;
 }
 
-.product-list {
+.products-lists {
   display: flex;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
   align-items: center;
+  padding: 20px;
 }
 
-.product-list .item:last-child {
-  margin-right: 0;
+.products-lists li {
+  width: 23%;
+  height: auto;
+  margin: 8px 6px;
 }
 
-.item:hover {
+.products-lists li:hover {
   box-shadow: rgba(99, 99, 99, 0.2) 0px 2px 8px 0px;
 }
 
-.item .item_img {
+.products-lists .product_img {
   overflow: hidden;
 }
 
-.item .item_img img {
+.product_img img {
   display: block;
-  width: 230px;
+  width: 100%;
   height: 230px;
   transition: transform 200ms ease-in;
 }
 
-.item .item_img img:hover {
+.product_img img:hover {
   transform: scale(1.1);
 }
 
-.item .item_info {
+.product_info {
   background-color: #fff;
   padding: 10px;
 }
 
-.item_info .name {
+.product_info .name {
   color: #3f3d3a;
   font-size: 16px;
 }
 
-.item_info .price {
+.product_info .price {
   color: #86848e;
   font-size: 14px;
 }

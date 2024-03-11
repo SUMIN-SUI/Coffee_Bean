@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="product.css" />
+    <link rel="stylesheet" type="text/css" href="product.css" />
     <title>Coffee Bean</title>
   </head>
   <body>
@@ -17,7 +17,9 @@
         <% productList.forEach((item) => { %>
         <li class="item">
           <a href="/blend/<%= item.id%>">
-            <img src="<%= item.img%>" />
+            <div class="item_img">
+              <img src="<%= item.img%>" />
+            </div>
             <div class="item_info">
               <p class="name"><%= item.name%></p>
               <p class="price">
@@ -29,5 +31,6 @@
         <% });%>
       </ul>
     </main>
+    <%- include("./footer.ejs") %>
   </body>
 </html>

@@ -4,12 +4,13 @@
   align-items: center;
   padding: 40px 0;
   background-color: #f5f5f5;
+  border-bottom: 1px solid #e5e5e5;
 }
 
 .item-info img {
   display: block;
-  width: 300px;
-  height: 300px;
+  width: 350px;
+  height: 350px;
   border-radius: 10px;
   margin-right: 50px;
 }
@@ -37,8 +38,7 @@
 
 .addToCart p {
   font-size: 16px;
-  padding: 0 20px;
-  margin-bottom: 16px;
+  margin-bottom: 30px;
 }
 
 .addToCart .options {
@@ -51,7 +51,16 @@
 .options button {
   padding: 20px 40px;
   border-radius: 4px;
-  background-color: lightgray;
+  background-color: #f5f5f5;
+  transition: all 100ms ease-in;
+}
+
+.options button:hover {
+  background-color: #e5e5e5;
+}
+
+.options button:active {
+  background-color: #efeeee54;
 }
 
 .form-price {
@@ -59,15 +68,16 @@
 }
 
 .form-quantity {
-  width: 100%;
-  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   margin-bottom: 16px;
 }
 
 .quantity {
-  width: 140px;
+  width: 160px;
   height: auto;
-  font-size: 18px;
+  font-size: 20px;
   padding: 12px 0;
   border: 2px solid #444444;
   border-radius: 30px;
@@ -75,21 +85,96 @@
 }
 
 .quantity i {
-  font-size: 18px;
+  font-size: 16px;
+}
+
+.quantity-input {
+  padding: 0 10px;
 }
 
 .cartBtn {
   width: 100%;
   height: auto;
-  font-size: 16px;
+  font-size: 18px;
   font-weight: 500;
   color: #fff;
-  background-color: #444444;
+  background-color: #898f4b;
   padding: 16px 0;
   border: none;
   border-radius: 10px;
+  transition: all 100ms ease-in;
+}
+
+.cartBtn:hover {
+  background-color: #444444;
 }
 
 .result {
   display: none;
+}
+
+.reviews {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #f5f5f5;
+  padding: 20px;
+  margin: auto;
+}
+
+.reviews-header {
+  width: 70vw;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.reviews-header h3 {
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.reviews-header button {
+  color: #fff;
+  background-color: #444444;
+  border-radius: 20px;
+  padding: 4px 12px;
+  transition: all 100ms ease-in;
+}
+
+.reviews-header button:hover {
+  color: #444444;
+  background-color: #e5e5e5;
+}
+
+table {
+  width: 70vw;
+  font-size: 0.9em;
+  border: 1px #d5d5d5 solid;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+th {
+  text-align: left;
+}
+
+thead {
+  font-weight: 700;
+  background: #d5d5d5;
+}
+
+td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+  text-align: center;
+}
+
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
 }

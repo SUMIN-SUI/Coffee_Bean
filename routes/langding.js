@@ -15,4 +15,16 @@ router.get("/", function (request, response) {
   });
 });
 
+router.post("/", function (request, response) {
+  mysql.query(`SELECT * FROM product `, function (error, results) {
+    if (!error) {
+      response.render("landing", {
+        products: results,
+      });
+    } else {
+      console.log("Error");
+    }
+  });
+});
+
 module.exports = router;

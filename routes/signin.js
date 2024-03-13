@@ -9,14 +9,16 @@ router.get("/", function (request, response) {
 
 router.post("/", function (request, response) {
   mysql.query(
-    `SELECT * FROM user WHERE id = '${request.body.id}' and '${request.body.pw}'`,
+    `SELECT * FROM user WHERE id = '${request.body.inputId}' and pw = '${request.body.inputPw}'`,
     function (error, results) {
       if (!error) {
         request.session.user = {
           user_id: results[0].id,
           user_pw: results[0].pw,
         };
-        response.redirect("/");
+        response.send(
+          "<script>alert('로그인 되었습니다'); location.href = '/';</script>"
+        );
       } else {
         console.log("Error");
       }

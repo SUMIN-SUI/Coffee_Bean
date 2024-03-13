@@ -10,6 +10,7 @@ router.get("/", function (request, response) {
       if (!error) {
         response.render("product", {
           header: "ESPRESSO BLENDS",
+          link: "blend",
           productList: results,
         });
       } else {
@@ -20,15 +21,27 @@ router.get("/", function (request, response) {
 });
 
 router.get("/:id", function (request, response) {
+  console.log(__dirname);
   mysql.query(
     "SELECT * FROM product WHERE id = ?",
     [request.params.id],
-    function (error, results) {
-      if (!error) {
-        response.render("product_detail", {
-          header: "ESPRESSO BLENDS",
-          product: results[0],
-        });
+    function (error1, results1) {
+      if (!error1) {
+        mysql.query(
+          "SELECT * FROM reviews WHERE product_id = ?",
+          [request.params.id],
+          function (error2, results2) {
+            if (!error2) {
+              response.render("product_detail", {
+                header: "ESPRESSO BLENDS",
+                product: results1[0],
+                reviews: results2,
+              });
+            } else {
+              console.log("Error");
+            }
+          }
+        );
       } else {
         console.log("Error");
       }
@@ -36,11 +49,8 @@ router.get("/:id", function (request, response) {
   );
 });
 
-let cartId = 10;
-
 router.post("/:id", function (request, response) {
   const body = request.body;
-
   let user_member_id;
   let product_id;
 
@@ -49,11 +59,12 @@ router.post("/:id", function (request, response) {
       `SELECT member_id FROM user WHERE id = '${request.session.user.user_id}'`,
       async function (error, results) {
         if (!error) {
+          console.log("getuserdata " + results);
           let result = await results[0].member_id;
           user_member_id = result;
           getProductData();
         } else {
-          console.log("Error");
+          console.log("getuserdata Error");
         }
       }
     );
@@ -69,7 +80,7 @@ router.post("/:id", function (request, response) {
           product_id = result;
           inputCartData();
         } else {
-          console.log("Error");
+          console.log("getproductdata Error");
         }
       }
     );
@@ -77,9 +88,8 @@ router.post("/:id", function (request, response) {
 
   function inputCartData() {
     mysql.query(
-      "INSERT INTO cart(id, member_id, product_id, name, kg, quantitiy, price) VALUES(?,?,?,?,?,?,?)",
+      "INSERT INTO cart(member_id, product_id, product_name, kg, quantity, price) VALUES(?,?,?,?,?,?)",
       [
-        cartId,
         user_member_id,
         product_id,
         body.product_name,
@@ -87,13 +97,13 @@ router.post("/:id", function (request, response) {
         body.product_quantity,
         body.product_price,
       ],
-      function (error, results) {
+      async function (error, results) {
         if (!error) {
-          cartId++;
-          let result = results;
-          console.log(result);
+          response.send(
+            "<script>alert('장바구니에 상품이 담겼습니다'); location.href = '/';</script>"
+          );
         } else {
-          console.log("Error");
+          console.log("inputcartdata Error");
         }
       }
     );

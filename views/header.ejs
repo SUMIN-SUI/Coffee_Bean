@@ -3,8 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" type="text/css" href="header.css" />
-    <title>Document</title>
+    <link rel="stylesheet" href="../header.css" />
+    <title>CoffeeBean</title>
     <script
       src="https://kit.fontawesome.com/b669fcd44b.js"
       crossorigin="anonymous"
@@ -14,7 +14,7 @@
     <header class="header-container">
       <div class="header">
         <a href="/">
-          <img src="img/coffeeBeanLogo.jpg" alt="" />
+          <img src="../../img/coffeeBeanLogo.jpg" alt="" />
         </a>
       </div>
 
@@ -37,12 +37,12 @@
 
         <ul class="user-info">
           <li class="header-user">
-            <button class="user">
+            <button type="button" class="user">
               <i class="fa-regular fa-user"></i>
             </button>
             <% if(user_id) { %>
             <div class="login">
-              <p><%= user_id %>님 환영합니다.</p>
+              <p><%= user_id %>님</p>
               <a href="/logout">로그아웃</a>
             </div>
             <% } else { %>
@@ -53,9 +53,9 @@
             <% } %>
           </li>
           <li>
-            <button class="cart">
+            <a href="/cart" class="cart">
               <i class="fa-solid fa-cart-shopping"></i>
-            </button>
+            </a>
           </li>
         </ul>
       </div>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="order.css" />
+    <title>CoffeeBean</title>
+  </head>
+  <body>
+    <%- include("./header.ejs") %>
+    <main>
+      <form action="/order/checkout" method="post">
+        <div>
+          <h3>주문내역확인</h3>
+          <% orderInfo.forEach(item => { %>
+          <div>
+            <div>
+              <p><%= item.product_name %></p>
+              <p><%= item.kg %></p>
+            </div>
+            <p>x <%= item.quantity %></p>
+          </div>
+          <% }) %>
+        </div>
+        <p>총금액 : <%= totalPrice %></p>
+        <div>
+          <h3>주문자 정보</h3>
+          <div>
+            <label for="user_name">이름</label>
+            <input
+              type="text"
+              name="user_name"
+              id="user_name"
+              value="<%= orderInfo[0].name %>"
+            />
+          </div>
+          <div>
+            <label for="user_tel">번호</label>
+            <input
+              type="text"
+              name="user_tel"
+              id="user_tel"
+              value="<%= orderInfo[0].tel %>"
+            />
+          </div>
+          <div>
+            <label for="user_address">배송지</label>
+            <input
+              type="text"
+              name="user_address"
+              id="user_address"
+              value="<%= orderInfo[0].address %>"
+            />
+          </div>
+        </div>
+
+        <div class="results">
+          <input
+            type="text"
+            name="user_member_id"
+            value="<%= orderInfo[0].member_id %>"
+          />
+          <% orderInfo.forEach((item) => { %>
+          <input type="text" name="product_id" value="<%= item.product_id %>" />
+          <% }) %>
+          <input class="date" type="text" name="order_date" value="" />
+          <input type="text" name="totalPrice" value="<%= totalPrice %>" />
+        </div>
+
+        <input type="submit" value="주문하기" />
+      </form>
+    </main>
+    <%- include("./footer.ejs") %>
+    <script>
+      const date = document.querySelector(".date");
+      function getDate() {
+        const today = new Date();
+        const year = today.getFullYear();
+        const month = (today.getMonth() + 1).toString().padStart(2, "0");
+        const day = today.getDate().toString().padStart(2, "0");
+        const dateString = year + "-" + month + "-" + day;
+        date.value = dateString;
+      }
+      getDate();
+    </script>
+  </body>
+</html>

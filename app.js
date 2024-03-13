@@ -34,17 +34,23 @@ const landingRouter = require("./routes/langding");
 const signinRouter = require("./routes/signin");
 const signupRouter = require("./routes/signup");
 const logoutRouter = require("./routes/logout");
+const cartRouter = require("./routes/cart");
 const blendRouter = require("./routes/blend");
 const originRouter = require("./routes/origin");
 const decafRouter = require("./routes/decaf");
+const orderRouter = require("./routes/order");
+const reviewRouter = require("./routes/review");
 
 app.use("/", landingRouter);
 app.use("/signin", signinRouter);
 app.use("/signup", signupRouter);
 app.use("/logout", logoutRouter);
+app.use("/cart", cartRouter);
 app.use("/blend", blendRouter);
 app.use("/origin", originRouter);
 app.use("/decaf", decafRouter);
+app.use("/order", orderRouter);
+app.use("/review", reviewRouter);
 
 app.listen(3000, function () {
   console.log("Server Running at http://127.0.0.1:3000");

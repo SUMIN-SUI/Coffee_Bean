@@ -21,7 +21,7 @@ a {
 }
 
 .header-container {
-  padding: 20px;
+  padding: 10px 20px;
   background-color: #f5f5f5;
   border-bottom: 1px solid #e5e5e5;
 }
@@ -54,6 +54,7 @@ a {
 .user-info {
   display: flex;
   justify-content: space-evenly;
+  align-items: center;
 }
 
 .user-info button {
@@ -73,14 +74,14 @@ a {
 }
 
 .login {
-  width: 200px;
+  width: 230px;
   height: auto;
   display: none;
   position: absolute;
   right: 0;
   font-size: 18px;
   font-weight: 500;
-  background-color: #e5e5e5;
+  background-color: rgb(0, 0, 0, 0.3);
   padding: 20px;
   border-radius: 10px;
   text-align: center;
@@ -91,10 +92,16 @@ a {
   display: block;
   width: 100%;
   height: auto;
-  color: #fff;
-  background-color: #444444;
+  background-color: #e5e5e5;
+  background-color: #fff;
   padding: 4px 0;
-  border-radius: 20px;
+  border-radius: 4px;
+  transition: all 100ms ease-in;
+}
+
+.sign:hover {
+  color: #fff;
+  background-color: #757575;
 }
 
 .sign:nth-child(1) {

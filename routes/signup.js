@@ -7,15 +7,12 @@ router.get("/", function (request, response) {
   response.render("signup");
 });
 
-let memberId = 0;
-
 router.post("/", function (request, response) {
   const body = request.body;
 
   mysql.query(
-    "INSERT INTO user(member_id, id, pw, name, tel, birth, email, address) VALUES(?,?,?,?,?,?,?,?)",
+    "INSERT INTO user(id, pw, name, tel, birth, email, address) VALUES(?,?,?,?,?,?,?)",
     [
-      memberId,
       body.id,
       body.pw,
       body.name,
@@ -26,7 +23,6 @@ router.post("/", function (request, response) {
     ],
     function (error, results) {
       if (!error) {
-        memberId++;
         response.redirect("/");
       } else {
         console.log(error);

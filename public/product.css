@@ -29,6 +29,9 @@ main {
 }
 
 .item .item_img {
+  width: 230px;
+  height: 230px;
+  border-radius: 6px;
   overflow: hidden;
 }
 

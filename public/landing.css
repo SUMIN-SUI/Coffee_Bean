@@ -22,7 +22,7 @@ main {
 }
 
 .products-lists li {
-  width: 23%;
+  width: 230px;
   height: auto;
   margin: 8px 6px;
 }
@@ -32,6 +32,7 @@ main {
 }
 
 .products-lists .product_img {
+  border-radius: 6px;
   overflow: hidden;
 }
 
@@ -47,13 +48,19 @@ main {
 }
 
 .product_info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   background-color: #fff;
+  height: 70px;
   padding: 10px;
 }
 
 .product_info .name {
   color: #3f3d3a;
   font-size: 16px;
+  margin-bottom: 4px;
 }
 
 .product_info .price {

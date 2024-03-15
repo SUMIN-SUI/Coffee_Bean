@@ -75,7 +75,12 @@
             id="product_quantity"
             value=""
           />
-          <input type="text" name="product_price" id="product_price" value="" />
+          <input
+            type="text"
+            name="product_totalPrice"
+            id="product_totalPrice"
+            value=""
+          />
         </div>
         <button class="cartBtn" type="submit">장바구니</button>
       </form>
@@ -108,9 +113,15 @@
             <td><%= review.review_wirter %></td>
             <td><%= review.review_date %></td>
             <td>
-              <a href="/review/delete/<%= reviews.product_id %>">
-                <i class="fa-solid fa-xmark"></i>
-              </a>
+              <form action="/review/delete" method="post">
+                <button
+                  type="submit"
+                  name="reviewId"
+                  value="<%= review.review_id %>"
+                >
+                  <i class="fa-solid fa-xmark"></i>
+                </button>
+              </form>
             </td>
           </tr>
           <% }) %>
@@ -132,14 +143,14 @@
 
       const product_option = document.querySelector("#product_option");
       const product_quantity = document.querySelector("#product_quantity");
-      const product_price = document.querySelector("#product_price");
+      const product_totalPrice = document.querySelector("#product_totalPrice");
 
       let selected_price = 0;
 
       option_1.addEventListener("click", () => {
         product_option.value = "250g";
         product_quantity.value = 1;
-        product_price.value = parseInt(option_1.value);
+        product_totalPrice.value = parseInt(option_1.value);
         quantityInput.innerHTML = 1;
         selected_price = parseInt(option_1.value);
         cartBtn.innerHTML = `장바구니 - ${option_1.value}원`;
@@ -148,7 +159,7 @@
       option_2.addEventListener("click", () => {
         product_option.value = "500g";
         product_quantity.value = 1;
-        product_price.value = parseInt(option_2.value);
+        product_totalPrice.value = parseInt(option_2.value);
         quantityInput.innerHTML = 1;
         selected_price = parseInt(option_2.value);
         cartBtn.innerHTML = `장바구니 - ${option_2.value}원`;
@@ -157,7 +168,7 @@
       option_3.addEventListener("click", () => {
         product_option.value = "1kg";
         product_quantity.value = 1;
-        product_price.value = parseInt(option_3.value);
+        product_totalPrice.value = parseInt(option_3.value);
         quantityInput.innerHTML = 1;
         selected_price = parseInt(option_3.value);
         cartBtn.innerHTML = `장바구니 - ${option_3.value}원`;
@@ -174,6 +185,7 @@
         } else {
           quantityInput.innerHTML = --newQuantity;
           cartBtn.innerHTML = `장바구니 - ${selected_price * newQuantity}원`;
+          product_totalPrice.value = selected_price * newQuantity;
           product_quantity.value = newQuantity;
         }
       });
@@ -185,6 +197,7 @@
         let newQuantity = parseInt(quantityInput.innerHTML);
         quantityInput.innerHTML = ++newQuantity;
         cartBtn.innerHTML = `장바구니 - ${selected_price * newQuantity}원`;
+        product_totalPrice.value = selected_price * newQuantity;
         product_quantity.value = newQuantity;
       });
 

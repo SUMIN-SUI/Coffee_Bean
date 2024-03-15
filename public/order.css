@@ -1,3 +1,99 @@
+main {
+  background-color: #f5f5f5;
+  padding: 50px 20px;
+}
+
+form {
+  width: 70vw;
+  margin: auto;
+}
+
+table {
+  width: 100%;
+  font-size: 0.9em;
+  border: 1px #d5d5d5 solid;
+  border-collapse: collapse;
+  border-radius: 5px;
+  overflow: hidden;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25);
+}
+
+th {
+  text-align: left;
+}
+
+thead {
+  font-weight: 700;
+  background: #d5d5d5;
+}
+
+td,
+th {
+  padding: 1em 0.5em;
+  vertical-align: middle;
+  text-align: center;
+}
+
+td {
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  background: #fff;
+}
+
+.checkOrder {
+  margin-bottom: 16px;
+}
+
+.clientInfo {
+  margin-bottom: 32px;
+}
+
+.checkOrder header,
+.clientInfo header {
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e5e5;
+  margin-bottom: 16px;
+}
+
+.clientInfo div {
+  margin-bottom: 8px;
+}
+
+.clientInfo-detail {
+  padding: 0 20px;
+}
+
+label {
+  display: inline-block;
+  width: 16%;
+  color: #696d74;
+}
+
+input {
+  display: inline-block;
+  width: 82%;
+  height: 34px;
+  font-size: 18px;
+  background-color: #fff;
+  border: 1px solid #696d74;
+  border-radius: 6px;
+  padding: 0 8px;
+}
+
 .results {
   display: none;
+}
+
+.submit_order {
+  display: block;
+  width: 250px;
+  height: auto;
+  color: #fff;
+  background-color: #444444;
+  padding: 10px 0;
+  transition: all 100ms ease-in;
+  margin: auto;
+}
+
+.submit_order:hover {
+  background-color: rgb(68, 68, 68, 0.7);
 }

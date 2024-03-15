@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+body {
+  background-color: #f5f5f5;
+}
+
 ul {
   list-style: none;
   padding-left: 0;
@@ -92,7 +96,6 @@ a {
   display: block;
   width: 100%;
   height: auto;
-  background-color: #e5e5e5;
   background-color: #fff;
   padding: 4px 0;
   border-radius: 4px;
@@ -119,4 +122,29 @@ a {
 
 .header-menu-lists a:hover {
   color: #757575;
+}
+
+.login_id {
+  display: block;
+  width: 100%;
+  height: auto;
+  background-color: #fff;
+  padding: 4px 0;
+  border-radius: 4px;
+  margin-bottom: 4px;
+}
+
+.logout {
+  display: block;
+  width: 100%;
+  height: auto;
+  color: #fff;
+  background-color: #757575;
+  padding: 4px 0;
+  border-radius: 4px;
+  transition: all 100ms ease-in;
+}
+
+.logout:hover {
+  background-color: #000000;
 }

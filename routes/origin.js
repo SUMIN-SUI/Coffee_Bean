@@ -24,12 +24,23 @@ router.get("/:id", function (request, response) {
   mysql.query(
     "SELECT * FROM product WHERE id = ?",
     [request.params.id],
-    function (error, results) {
-      if (!error) {
-        response.render("product_detail", {
-          header: "ESPRESSO SINGLE ORIGIN",
-          product: results[0],
-        });
+    function (error1, results1) {
+      if (!error1) {
+        mysql.query(
+          "SELECT * FROM reviews WHERE product_id = ?",
+          [request.params.id],
+          function (error2, results2) {
+            if (!error2) {
+              response.render("product_detail", {
+                header: "ESPRESSO SINGLE ORIGIN",
+                product: results1[0],
+                reviews: results2,
+              });
+            } else {
+              console.log("Error");
+            }
+          }
+        );
       } else {
         console.log("Error");
       }
@@ -41,6 +52,12 @@ router.post("/:id", function (request, response) {
   const body = request.body;
   let user_member_id;
   let product_id;
+
+  if (!request.session.user) {
+    return response.send(
+      "<script>alert('로그인 해주세요'); location.href = '/';</script>"
+    );
+  }
 
   function getUserData() {
     mysql.query(
@@ -74,7 +91,6 @@ router.post("/:id", function (request, response) {
   }
 
   function inputCartData() {
-    const cartId = Math.floor(Math.random() * 1000);
     mysql.query(
       "INSERT INTO cart(member_id, product_id, product_name, kg, quantity, price) VALUES(?,?,?,?,?,?)",
       [
@@ -83,13 +99,14 @@ router.post("/:id", function (request, response) {
         body.product_name,
         body.product_option,
         body.product_quantity,
-        body.product_price,
+        body.product_totalPrice,
       ],
       function (error, results) {
         if (!error) {
-          // response.redirect("/");
+          response.send(
+            "<script>alert('장바구니에 상품이 담겼습니다'); location.href = '/';</script>"
+          );
         } else {
-          console.log(error);
           console.log("inputcartdata Error");
         }
       }

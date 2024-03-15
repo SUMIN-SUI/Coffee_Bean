@@ -3,41 +3,46 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="signup.css" />
     <title>Coffee Bean</title>
   </head>
   <body>
     <%- include("./header.ejs")%>
-    <form method="post">
-      <div>
-        <label for="id">아이디</label>
-        <input type="text" name="id" id="id" />
-      </div>
-      <div>
-        <label for="pw">비밀번호</label>
-        <input type="text" name="pw" id="pw" />
-      </div>
-      <div>
-        <label for="name">이름</label>
-        <input type="text" name="name" id="name" />
-      </div>
-      <div>
-        <label for="tel">전화번호</label>
-        <input type="tel" name="tel" id="tel" />
-      </div>
-      <div>
-        <label for="birth">생년월일</label>
-        <input type="date" name="birth" id="birth" />
-      </div>
-      <div>
-        <label for="email">이메일</label>
-        <input type="email" name="email" id="email" />
-      </div>
-      <div>
-        <label for="address">주소</label>
-        <input type="text" name="address" id="address" />
-      </div>
-      <input type="submit" value="가입하기" />
-    </form>
+    <main>
+      <form method="post">
+        <section>
+          <div>
+            <label for="id">아이디:</label>
+            <input type="text" name="id" id="id" />
+          </div>
+          <div>
+            <label for="pw">비밀번호:</label>
+            <input type="text" name="pw" id="pw" />
+          </div>
+          <div>
+            <label for="name">이름:</label>
+            <input type="text" name="name" id="name" />
+          </div>
+          <div>
+            <label for="tel">전화번호:</label>
+            <input type="tel" name="tel" id="tel" />
+          </div>
+          <div>
+            <label for="birth">생년월일:</label>
+            <input type="date" name="birth" id="birth" />
+          </div>
+          <div>
+            <label for="email">이메일:</label>
+            <input type="email" name="email" id="email" />
+          </div>
+          <div>
+            <label for="address">주소:</label>
+            <input type="text" name="address" id="address" />
+          </div>
+        </section>
+        <input class="signupBtn" type="submit" value="가입하기" />
+      </form>
+    </main>
     <%- include("./footer.ejs") %>
   </body>
 </html>

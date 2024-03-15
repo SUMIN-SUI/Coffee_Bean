@@ -1,0 +1,56 @@
+form {
+  width: 70vw;
+  padding: 40px 0;
+  margin: auto;
+}
+
+form > div {
+  margin-bottom: 8px;
+}
+
+label {
+  display: block;
+  width: 50%;
+  color: #696d74;
+  margin-bottom: 4px;
+  margin: auto;
+}
+
+input,
+textarea {
+  display: block;
+  width: 50%;
+  height: 34px;
+  font-size: 18px;
+  background-color: #fff;
+  border: 1px solid #696d74;
+  border-radius: 6px;
+  padding: 0 8px;
+  margin: auto;
+}
+
+textarea {
+  width: 50%;
+  height: 200px;
+  padding: 8px;
+  overflow-y: scroll;
+}
+
+.result {
+  display: none;
+}
+
+.uploadBtn {
+  display: block;
+  width: 250px;
+  height: auto;
+  color: #fff;
+  background-color: #444444;
+  padding: 10px 0;
+  transition: all 100ms ease-in;
+  margin: auto;
+}
+
+.uploadBtn :hover {
+  background-color: rgb(68, 68, 68, 0.7);
+}

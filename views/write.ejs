@@ -4,11 +4,12 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="../../header.css" />
+    <link rel="stylesheet" href="write.css" />
     <title>CoffeeBean</title>
   </head>
   <body>
     <%- include("./header.ejs") %>
-    <h1>리뷰작성</h1>
+
     <section>
       <form method="post" action="/review">
         <div>
@@ -39,7 +40,7 @@
             disabled
           />
         </div>
-        <input type="submit" value="등록하기" />
+        <input class="uploadBtn" type="submit" value="리뷰등록하기" />
 
         <div class="result">
           <input type="number" name="product_id" value="<%- product_id%>" />
@@ -50,6 +51,7 @@
       </form>
     </section>
 
+    <%- include("./footer.ejs") %>
     <script>
       const date = document.querySelector(".date");
       const review_date = document.querySelector(".review_date");

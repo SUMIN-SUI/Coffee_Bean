@@ -21,7 +21,6 @@ router.get("/", function (request, response) {
 });
 
 router.get("/:id", function (request, response) {
-  console.log(__dirname);
   mysql.query(
     "SELECT * FROM product WHERE id = ?",
     [request.params.id],
@@ -54,12 +53,17 @@ router.post("/:id", function (request, response) {
   let user_member_id;
   let product_id;
 
+  if (!request.session.user) {
+    return response.send(
+      "<script>alert('로그인 해주세요'); location.href = '/';</script>"
+    );
+  }
+
   function getUserData() {
     mysql.query(
       `SELECT member_id FROM user WHERE id = '${request.session.user.user_id}'`,
       async function (error, results) {
         if (!error) {
-          console.log("getuserdata " + results);
           let result = await results[0].member_id;
           user_member_id = result;
           getProductData();
@@ -95,7 +99,7 @@ router.post("/:id", function (request, response) {
         body.product_name,
         body.product_option,
         body.product_quantity,
-        body.product_price,
+        body.product_totalPrice,
       ],
       async function (error, results) {
         if (!error) {

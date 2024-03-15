@@ -78,4 +78,41 @@ router.post("/", function (request, response) {
   );
 });
 
+router.post("/delete", function (request, response) {
+  if (!request.session.user) {
+    return response.send(
+      "<script>alert('로그인 후 이용해주세요'); location.href = '/';</script>"
+    );
+  }
+
+  mysql.query(
+    `SELECT review_wirter FROM reviews WHERE review_id = ${request.body.reviewId};`,
+    function (error, results) {
+      if (!error) {
+        if (results[0].review_wirter === request.session.user.user_id) {
+          mysql.query(
+            "DELETE FROM reviews WHERE review_id=?",
+            [request.body.reviewId],
+            function (error, results) {
+              if (!error) {
+                response.send(
+                  "<script>alert('리뷰삭제완료'); location.href = '/';</script>"
+                );
+              } else {
+                console.log("Error");
+              }
+            }
+          );
+        } else {
+          return response.send(
+            "<script>alert('삭제 권환이 없습니다');</script>"
+          );
+        }
+      } else {
+        return response.send("<script>alert('삭제 권환이 없습니다');</script>");
+      }
+    }
+  );
+});
+
 module.exports = router;

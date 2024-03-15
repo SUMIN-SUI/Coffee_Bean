@@ -10,47 +10,58 @@
     <%- include("./header.ejs") %>
     <main>
       <form action="/order/checkout" method="post">
-        <div>
-          <h3>주문내역확인</h3>
-          <% orderInfo.forEach(item => { %>
-          <div>
-            <div>
-              <p><%= item.product_name %></p>
-              <p><%= item.kg %></p>
-            </div>
-            <p>x <%= item.quantity %></p>
-          </div>
-          <% }) %>
+        <div class="checkOrder">
+          <header>
+            <h3>주문내역확인</h3>
+          </header>
+
+          <table>
+            <% orderInfo.forEach(item => { %>
+            <tr>
+              <td><%= item.product_name %> - <%= item.kg %></td>
+              <td>x <%= item.quantity %></td>
+            </tr>
+            <% }) %>
+            <tr>
+              <td>총금액 : <%= totalPrice %></td>
+              <td></td>
+            </tr>
+          </table>
         </div>
-        <p>총금액 : <%= totalPrice %></p>
-        <div>
-          <h3>주문자 정보</h3>
-          <div>
-            <label for="user_name">이름</label>
-            <input
-              type="text"
-              name="user_name"
-              id="user_name"
-              value="<%= orderInfo[0].name %>"
-            />
-          </div>
-          <div>
-            <label for="user_tel">번호</label>
-            <input
-              type="text"
-              name="user_tel"
-              id="user_tel"
-              value="<%= orderInfo[0].tel %>"
-            />
-          </div>
-          <div>
-            <label for="user_address">배송지</label>
-            <input
-              type="text"
-              name="user_address"
-              id="user_address"
-              value="<%= orderInfo[0].address %>"
-            />
+
+        <div class="clientInfo">
+          <header>
+            <h3>주문자 정보</h3>
+          </header>
+
+          <div class="clientInfo-detail">
+            <div>
+              <label for="user_name">이름:</label>
+              <input
+                type="text"
+                name="user_name"
+                id="user_name"
+                value="<%= orderInfo[0].name %>"
+              />
+            </div>
+            <div>
+              <label for="user_tel">번호:</label>
+              <input
+                type="text"
+                name="user_tel"
+                id="user_tel"
+                value="<%= orderInfo[0].tel %>"
+              />
+            </div>
+            <div>
+              <label for="user_address">배송지:</label>
+              <input
+                type="text"
+                name="user_address"
+                id="user_address"
+                value="<%= orderInfo[0].address %>"
+              />
+            </div>
           </div>
         </div>
 
@@ -67,7 +78,7 @@
           <input type="text" name="totalPrice" value="<%= totalPrice %>" />
         </div>
 
-        <input type="submit" value="주문하기" />
+        <input class="submit_order" type="submit" value="주문하기" />
       </form>
     </main>
     <%- include("./footer.ejs") %>

@@ -42,8 +42,8 @@
             </button>
             <% if(user_id) { %>
             <div class="login">
-              <p><%= user_id %>님</p>
-              <a href="/logout">로그아웃</a>
+              <p class="login_id"><%= user_id %> 님</p>
+              <a class="logout" href="/logout">로그아웃</a>
             </div>
             <% } else { %>
             <div class="login">
